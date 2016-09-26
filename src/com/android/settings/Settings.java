@@ -164,4 +164,5 @@ public class Settings extends SettingsActivity {
 
     // Custom Additions.
     public static class SuperUserActivity extends SettingsActivity { /* empty */ }
+    public static class KernelAdiutorActivity extends SettingsActivity { /* empty */ }
 }

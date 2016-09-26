@@ -227,6 +227,8 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private static final String SUPERUSER_FRAGMENT = "com.android.settings.SuperUser";
 
+    private static final String KERNELADIUTOR_FRAGMENT = "com.android.settings.KernelAdiutor";
+
     private String mFragmentClass;
 
     private CharSequence mInitialTitle;
@@ -1020,6 +1022,13 @@ public class SettingsActivity extends SettingsDrawerActivity
             finish();
             return null;
         }
+        if (KERNELADIUTOR_FRAGMENT.equals(fragmentName)) {
+            Intent kerneladiutorIntent = new Intent();
+            kerneladiutorIntent.setClassName("com.grarak.kerneladiutor", "com.grarak.kerneladiutor.activities.StartActivity");
+            startActivity(kerneladiutorIntent);
+            finish();
+            return null;
+        }
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
                     + fragmentName);
@@ -1120,6 +1129,16 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.SuperSUActivity.class.getName()),
                 suSupported, isAdmin, pm);
+
+        // KernelAdiutor
+        boolean kaSupported = false;
+        try {
+            kaSupported = (getPackageManager().getPackageInfo("com.grarak.kerneladiutor", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        setTileEnabled(new ComponentName(packageName,
+                        Settings.KernelAdiutorActivity.class.getName()),
+                kaSupported, isAdmin, pm);
 
         // SuperUser
         boolean phhSupported = false;

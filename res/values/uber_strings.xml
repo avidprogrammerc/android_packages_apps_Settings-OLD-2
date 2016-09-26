@@ -42,6 +42,7 @@
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
     <string name="superuser_title">Superuser</string>
+    <string name="kerneladiutor_title">Kernel Adiutor</string>
 
     <!-- Custom Settings -->
     <string name="header_category_custom">ROM Tuning</string>
